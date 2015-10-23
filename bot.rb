@@ -59,6 +59,8 @@ class MessageParser
     when /^\/qotd/
       # bot.api.send_message(chat_id: message.chat.id, text: get_random_quote)
       handle_quotes(bot,message)
+    when /^\/wishlist/
+      bot.api.send_message(chat_id: message.chat.id, text: "Link to feature wishlist: https://goo.gl/NZCgwB")
     else
       bot.api.send_message(chat_id: message.chat.id, text: "I'm sorry #{message.from.first_name}, I'm afraid I can't do that.")
     end
