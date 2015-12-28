@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'telegram/bot'
-require 'yaml'
-require_relative './QuoteHandler'
+require_relative 'quote_handler'
+require_relative 'hastag_handler'
 
 class MessageParser
 
@@ -14,8 +14,9 @@ class MessageParser
     when /^\/end/
       bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}!")
     when /^\/qotd/
-      # bot.api.send_message(chat_id: message.chat.id, text: get_random_quote)
       QuoteHandler.handle_quotes(bot,message)
+    when /^\/hashtag_count/
+      HashtagHandler.count_hashtags(bot,message)
     when /^\/wishlist/
       bot.api.send_message(chat_id: message.chat.id, text: "Link to feature wishlist: https://goo.gl/NZCgwB")
     else
@@ -24,24 +25,15 @@ class MessageParser
   end
 
   def self.parse_plaintext(bot, message)
-    p message.text
-    hashtag = ''
-    if /^#\w+|/.match(message.text)
-      hashtag = /^#\w+|/.match(message.text).to_s
-    elsif /\s#\w+/.match(message.text)
-      hashtag = /\s#\w+/.match(message.text).to_s
+    if !message.text.match(/^#\w+|/).to_s.empty? #message starts with hashtag
+      hashtag_string = message.text.match(/^#\w+|/).to_s
+    elsif !message.text.match(/#(\w+)/).to_s.empty? #message contains a hashtag
+      hashtag_string = message.text.match(/#(\w+)/).to_s
     end
 
-    if !hashtag.empty?
-      p 'hash'
-      p hashtag
-      if !$h[hashtag].nil?
-        $h[hashtag] += 1
-      elsif $h[hashtag].nil?
-        $h[hashtag] = 1
-      end
+    if !(hashtag_string.nil? || hashtag_string.empty?)
+      HashtagHandler.handle_hashtags(bot,message,hashtag_string)
     end
 
-    p $h
   end
 end

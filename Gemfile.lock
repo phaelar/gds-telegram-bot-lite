@@ -1,10 +1,25 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (4.2.4)
+      activesupport (= 4.2.4)
+      builder (~> 3.1)
+    activerecord (4.2.4)
+      activemodel (= 4.2.4)
+      activesupport (= 4.2.4)
+      arel (~> 6.0)
+    activesupport (4.2.4)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    arel (6.0.3)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    builder (3.2.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     descendants_tracker (0.0.4)
@@ -19,9 +34,11 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    i18n (0.7.0)
     ice_nine (0.11.1)
     json (1.8.3)
     mimemagic (0.3.0)
+    minitest (5.8.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     persistent_http (1.0.6)
@@ -29,11 +46,14 @@ GEM
     persistent_httparty (0.1.2)
       httparty (~> 0.9)
       persistent_http (< 2)
+    pg (0.18.3)
     telegram-bot-ruby (0.3.10)
       httmultiparty
       persistent_httparty
       virtus
     thread_safe (0.3.5)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -44,6 +64,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
+  i18n
+  pg
   telegram-bot-ruby
 
 BUNDLED WITH

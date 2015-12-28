@@ -1,10 +1,15 @@
+#!/usr/bin/env ruby
+
 require 'rubygems'
 require 'telegram/bot'
-require './modules/MessageParser'
 
-token = ENV['API_TOKEN']
-$h = {}
+require './modules/app_configurator'
+require './modules/message_parser'
 
+config = AppConfigurator.new
+config.configure
+
+token = config.get_token
 
 p "Starting bot..."
 

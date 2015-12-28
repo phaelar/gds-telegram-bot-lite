@@ -1,9 +1,10 @@
-# GDS-telegram-bot-lite
+# GDS telegram bot rails
 
 Simple Telegram bot for IDA GDS!
 Still work in progress!
 
 Using the  [telegram-bot-ruby](https://github.com/atipugin/telegram-bot-ruby) wrapper for Telegram API.
+
 
 ## Installation
 Execute:
@@ -15,6 +16,12 @@ $ bundle
 ## Running the bot
 
 First things first, you need to [obtain a token](https://core.telegram.org/bots#botfather) for your bot. Then add your API token as an environment variable 'API_TOKEN'
+
+Execute:
+```shell
+$ rake db:create db:migrate
+$ ruby bot.rb
+```
 
 ## Contributing
 
@@ -28,4 +35,6 @@ First things first, you need to [obtain a token](https://core.telegram.org/bots#
 
 `/qotd`: Return a random quote
 
-`/qotd_add <author name> the actual quote`: Add your own quote to the list!
+`/qotd_add <author name> the actual quote`: Add your own quote to the list! Only works if you PM the bot. (example: `/qotd_add <Shia Labeouf> Don't let your dreams be dreams`)
+
+`/hashtag_count #<hashtag_name>`: Returns the number of messages with the hashtag specified. (exmaple: `/hashtag_count #hype`)
