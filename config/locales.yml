@@ -1,6 +1,7 @@
 en:
   start_message: |
     Welcome to GeeksDontSlack! My available commands are:
-    `/qotd` : Returns a random quote
-    `/qotd_add <author name> the actual quote` : Add your own quote to the list! Only works if you PM the bot. (example: `/qotd_add <Shia Labeouf> Don't let your dreams be dreams`)
-    `/hashtag_count #<hashtag_name>`: Returns the number of messages with the hashtag specified. (exmaple: `/hashtag_count #hype`)
+    `/qotd` : Returns a random developer quote from http://fortrabbit.github.io/quotes/
+    `/qotd_gds` : Returns a random user-submitted quote
+    `/qotd_gds_add <author name> the actual quote` : Add your own quote to the list! Only works if you PM the bot. (example: `/qotd_add <Shia Labeouf> Don't let your dreams be dreams`)
+    `/hashtag_count #<hashtag_name>`: Returns the number of messages with the hashtag specified. (example: `/hashtag_count #hype`)

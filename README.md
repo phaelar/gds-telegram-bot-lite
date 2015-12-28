@@ -33,8 +33,10 @@ $ ruby bot.rb
 
 ## Usage
 
-`/qotd`: Return a random quote
+`/qotd`: Return a random developer quote from http://fortrabbit.github.io/quotes/
 
-`/qotd_add <author name> the actual quote`: Add your own quote to the list! Only works if you PM the bot. (example: `/qotd_add <Shia Labeouf> Don't let your dreams be dreams`)
+`/qotd_gds`: Return a random user-submitted quote
 
-`/hashtag_count #<hashtag_name>`: Returns the number of messages with the hashtag specified. (exmaple: `/hashtag_count #hype`)
+`/qotd_gds_add <author name> the actual quote`: Add your own quote to the list! Only works if you PM the bot. (example: `/qotd_add <Shia Labeouf> Don't let your dreams be dreams`)
+
+`/hashtag_count #<hashtag_name>`: Returns the number of messages with the hashtag specified. (example: `/hashtag_count #hype`)

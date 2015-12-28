@@ -4,8 +4,12 @@ require 'telegram/bot'
 require './models/quote'
 
 class QuoteHandler
-
   def self.get_random_quote
+    quote = $developer_quotes[rand(0..$developer_quotes.length-1)]
+    "\"#{quote['text']}\" - #{quote['author']}"
+  end
+
+  def self.get_random_gds_quote
     total_quotes = Quote.count
     if total_quotes >= 1
       chosen = Quote.offset(rand(total_quotes)).first
@@ -26,7 +30,9 @@ class QuoteHandler
     case message_arr[0]
     when "/qotd"
       bot.api.send_message(chat_id: message.chat.id, text: self.get_random_quote)
-    when "/qotd_add"
+    when "/qotd_gds"
+      bot.api.send_message(chat_id: message.chat.id, text: self.get_random_gds_quote)
+    when "/qotd_gds_add"
       if message.chat.type != "private"
         bot.api.send_message(chat_id: message.chat.id, text: "Please send me a PM to add a new quote!")
       else

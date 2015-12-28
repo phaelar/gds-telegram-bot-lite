@@ -2,14 +2,16 @@
 
 require 'rubygems'
 require 'telegram/bot'
+require 'open-uri'
 
 require './modules/app_configurator'
 require './modules/message_parser'
 
 config = AppConfigurator.new
 config.configure
-
 token = config.get_token
+# @developer_quotes = config.fetch_developer_quotes
+# p @developer_quotes.length
 
 p "Starting bot..."
 

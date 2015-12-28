@@ -4,6 +4,7 @@ require './modules/database_connector'
 
 class AppConfigurator
   def configure
+    fetch_developer_quotes
     setup_i18n
     setup_database
   end
@@ -14,6 +15,14 @@ class AppConfigurator
 
   def get_logger
     Logger.new(STDOUT, Logger::DEBUG)
+  end
+
+  def fetch_developer_quotes
+    begin
+      $developer_quotes = JSON.parse(open("https://cdn.rawgit.com/fortrabbit/quotes/master/quotes.json").read)
+    rescue
+      $developer_quotes = {}
+    end
   end
 
   private
