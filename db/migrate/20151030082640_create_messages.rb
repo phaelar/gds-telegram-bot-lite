@@ -4,6 +4,8 @@ class CreateMessages < ActiveRecord::Migration
       t.references :hashtag, index: true, foreign_key: true
       t.string :user
       t.string :text
+      t.string :chat_id
+      t.string :chat_title
 
       t.timestamps null: false
     end

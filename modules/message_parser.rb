@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'telegram/bot'
 require_relative 'quote_handler'
-require_relative 'hastag_handler'
+require_relative 'hashtag_handler'
 
 class MessageParser
 
