@@ -10,7 +10,7 @@ class MessageParser
 
     case message.text
     when /^\/start/
-      bot.api.send_message(chat_id: message.chat.id, text: I18n.t('start_message'), parse_mode: 'Markdown')
+      bot.api.send_message(chat_id: message.chat.id, text: I18n.t('start_message'), parse_mode: 'Markdown', disable_web_page_preview: true)
     when /^\/qotd/
       QuoteHandler.handle_quotes(bot,message)
     when /^\/hashtag_count/
