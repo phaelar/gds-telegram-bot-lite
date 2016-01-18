@@ -5,3 +5,5 @@ en:
     `/qotd_gds` : Returns a random user-submitted quote
     `/qotd_gds_add <author name> the actual quote` : Add your own quote to the list! Only works if you PM the bot. (example: `/qotd_add <Shia Labeouf> Don't let your dreams be dreams`)
     `/hashtag_count #<hashtag_name>`: Returns the number of messages with the hashtag specified. (example: `/hashtag_count #hype`)
+  quotes:
+    formatting_error: "Sorry a formatting error occured! Please use this format: '/qotd_gds_add <author> message'"

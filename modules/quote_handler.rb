@@ -36,7 +36,7 @@ class QuoteHandler
       if message.chat.type != "private"
         bot.api.send_message(chat_id: message.chat.id, text: "Please send me a PM to add a new quote!")
       else
-        message.text.slice! "/qotd_add"
+        message.text.slice! "/qotd_gds_add"
         begin
           author_raw = /<.+>/.match(message.text).to_s
           message.text.slice! author_raw.to_s
@@ -48,7 +48,7 @@ class QuoteHandler
           self.add_to_quotes(author, phrase)
           bot.api.send_message(chat_id: message.chat.id, text: "Quote added! \n#{author}: #{message.text}")
         rescue Exception => e
-          bot.api.send_message(chat_id: message.chat.id, text: "Sorry a formatting error occured! Please use this format: '/qotd_add <author> message'")
+          bot.api.send_message(chat_id: message.chat.id, text: I18n.t('quotes.formatting_error'))
         end
       end
     end
