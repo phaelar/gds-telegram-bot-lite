@@ -10,8 +10,7 @@ require './modules/message_parser'
 config = AppConfigurator.new
 config.configure
 token = config.get_token
-# @developer_quotes = config.fetch_developer_quotes
-# p @developer_quotes.length
+$bot_name = ENV['TELEGRAM_BOT_NAME']
 
 p "Starting bot..."
 

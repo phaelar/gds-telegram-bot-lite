@@ -28,11 +28,11 @@ class QuoteHandler
 
     message_arr = message.text.split
     case message_arr[0]
-    when "/qotd"
+    when "/qotd", "/qotd@#{$bot_name}"
       bot.api.send_message(chat_id: message.chat.id, text: self.get_random_quote)
-    when "/qotd_gds"
+    when "/qotd_gds", "/qotd_gds@#{$bot_name}"
       bot.api.send_message(chat_id: message.chat.id, text: self.get_random_gds_quote)
-    when "/qotd_gds_add"
+    when "/qotd_gds_add", "/qotd_gds_add@#{$bot_name}"
       if message.chat.type != "private"
         bot.api.send_message(chat_id: message.chat.id, text: "Please send me a PM to add a new quote!")
       else
