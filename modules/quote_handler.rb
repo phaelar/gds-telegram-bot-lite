@@ -13,7 +13,7 @@ class QuoteHandler
     total_quotes = Quote.count
     if total_quotes >= 1
       chosen = Quote.offset(rand(total_quotes)).first
-      "#{chosen.author}: \n #{chosen.phrase}"
+      "\"#{chosen.phrase}\" - #{chosen.author}"
     else
       "Sorry, there are no quotes yet!"
     end
@@ -38,6 +38,7 @@ class QuoteHandler
       else
         message_text = message.text
         message_text.slice! "/qotd_gds_add"
+        message_text.slice! "@#{$bot_name}"
         begin
           author_raw = /<.+>/.match(message_text).to_s
           message_text.slice! author_raw.to_s
