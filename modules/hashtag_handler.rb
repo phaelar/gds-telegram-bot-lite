@@ -26,7 +26,7 @@ class HashtagHandler
       hashtag_string = message.text.match(/#(\w+)/).to_s
       raise Exception if hashtag_string.length < 1
       hashtag = Hashtag.find_by(name: hashtag_string)
-      count = hashtag.nil? ? 0 : hashtag.messages.select{|m| m.chat_id == message.chat.id.to_s}.count
+      count = hashtag.nil? ? 0 : hashtag.messages.select{|m| m.chat_id == message.chat.id.to_s}.uniq{ |m| m.user }.count
       bot.api.send_message(chat_id: message.chat.id, text: "Total number of messages with #{hashtag_string}: #{count}")
     rescue Exception => e
       bot.api.send_message(chat_id: message.chat.id, text: "Sorry a formatting error occured! Please use this format: '/hashtag_count #hashtagname")
