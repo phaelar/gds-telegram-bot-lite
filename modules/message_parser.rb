@@ -2,6 +2,7 @@ require 'rubygems'
 require 'telegram/bot'
 require_relative 'quote_handler'
 require_relative 'hashtag_handler'
+require_relative 'static_info_handler'
 
 class MessageParser
 
@@ -15,8 +16,8 @@ class MessageParser
       QuoteHandler.handle_quotes(bot,message)
     when /^\/hashtag_count/
       HashtagHandler.count_hashtags(bot,message)
-    when /^\/wishlist/
-      bot.api.send_message(chat_id: message.chat.id, text: "Link to feature wishlist: https://goo.gl/NZCgwB")
+    else
+      StaticInfoHandler.handle_static_info(bot,message)
     end
   end
 

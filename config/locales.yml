@@ -7,3 +7,17 @@ en:
     `/hashtag_count #<hashtag_name>`: Returns the number of messages with the hashtag specified. (example: `/hashtag_count #hype`)
   quotes:
     formatting_error: "Sorry a formatting error occured! Please use this format: '/qotd_gds_add <author> message'"
+  static_info:
+    wishlist: "Link to feature wishlist: https://goo.gl/NZCgwB"
+    chapter_list: |
+      List of Chapters within GDS:
+      - Agile
+      - Quality Engineering
+      - User Experience Design (UXD)
+      - Dev Hiring
+      - Tertiary Relations
+      - Financial Freedom
+      - Insanity workout
+      - Swimming
+      - Nerf
+      If you're interested in any of the Chapters, please enquire about them in the GDS telegram group!
