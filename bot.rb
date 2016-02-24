@@ -27,6 +27,7 @@ Telegram::Bot::Client.run(token) do |bot|
   rescue Telegram::Bot::Exceptions::ResponseError => e
     if e.error_code.to_s == '502'
       puts 'Telegram 502 error'
+      retry
     end
   end
 end
