@@ -9,12 +9,10 @@ require './modules/message_parser'
 
 config = AppConfigurator.new
 config.configure
-token = config.get_token
-$bot_name = ENV['TELEGRAM_BOT_NAME']
 
 p "Starting bot..."
 
-Telegram::Bot::Client.run(token) do |bot|
+Telegram::Bot::Client.run($token) do |bot|
   begin
     bot.listen do |message|
       next if message.text.nil?

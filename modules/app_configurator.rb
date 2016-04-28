@@ -1,16 +1,19 @@
 require 'logger'
-
 require './modules/database_connector'
+require 'yaml'
 
 class AppConfigurator
   def configure
+    read_from_config
     fetch_developer_quotes
     setup_i18n
     setup_database
   end
 
-  def get_token
-    ENV['API_TOKEN']
+  def read_from_config
+    config = YAML.load_file('config/secrets.yml')
+    $token = config['TELEGRAM_BOT_TOKEN']
+    $bot_name = config['TELEGRAM_BOT_NAME']
   end
 
   def get_logger
