@@ -4,9 +4,14 @@ require 'telegram/bot'
 require './models/quote'
 
 class QuoteHandler
-  def self.get_random_quote
+  def self.get_random_dev_quote
     quote = $developer_quotes[rand(0..$developer_quotes.length-1)]
     "\"#{quote['text']}\" - #{quote['author']}"
+  end
+
+  def self.get_random_50nerds_quote
+    quote = $tweets[rand(0..$tweets.length-1)]
+    quote.text
   end
 
   def self.get_random_gds_quote
@@ -28,8 +33,10 @@ class QuoteHandler
 
     message_arr = message.text.split
     case message_arr[0]
+    when "/50nerds", "/50nerds@#{$bot_name}"
+      bot.api.send_message(chat_id: message.chat.id, text: self.get_random_50nerds_quote)
     when "/qotd", "/qotd@#{$bot_name}"
-      bot.api.send_message(chat_id: message.chat.id, text: self.get_random_quote)
+      bot.api.send_message(chat_id: message.chat.id, text: self.get_random_dev_quote)
     when "/qotd_gds", "/qotd_gds@#{$bot_name}"
       bot.api.send_message(chat_id: message.chat.id, text: self.get_random_gds_quote)
     when "/qotd_gds_add", "/qotd_gds_add@#{$bot_name}"
